@@ -1,0 +1,115 @@
+\documentclass[xcolor=pst,serif]{beamer}
+\usetheme{utsa}
+
+
+\addbibresource{/Users/john/Documents/LaTeX/include/all.bib}
+
+
+
+\begin{document}
+
+%%%%%% Enter Title Information Here %%%%%%
+
+\title[*nix Commands--grep]{Basic *nix Commands -- grep}
+\subtitle{ME 4953/5013 - Introduction to High-Performance Computing}
+\author[ME 4953/5013]{}
+%\institute{}
+%\phone{505-284-4267}
+%\email{jtfoste@sandia.gov}
+\date{}
+
+%%%%%% Title Frame %%%%%%%
+%\section*{Title Page}                             
+                                 
+\frame{\titlepage}
+
+%%%%%% Begin entering slide content here %%%%
+
+%  find...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+%\section*{}
+\frame[t]{
+	\frametitle{\tt grep}
+	
+	\begin{itemize}
+		\item \underline{\bf g}lobal \underline{\bf r}egular \underline{\bf e}xpresion \underline{\bf p}rint 
+		 \item  {\tt grep} scans its input for a pattern, and can display the selected pattern, the line numbers, or the filenames where pattern occurs.
+	\end{itemize}
+	
+	\begin{block}{Structure of {\tt grep} command, e.g.}
+	
+	${\tt grep} \underbrace{\tt -i}_{\text{Options}} \quad \overbrace{\text{\tt pat}}^{\text{Patterm}} \quad \underbrace{\text{\tt *.c}}_{\text{filename(s)}}$
+	
+	\end{block}
+	
+%	
+}
+
+%  Selection criterion...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+%\section*{}
+\frame[t]{
+	\frametitle{{\tt grep} options}
+	
+	  %
+	\begin{table}[]
+		\label{table:second}
+		\centering
+		\begin{tabular}{l l }
+		\rowcolor{UTSAblue} {\color{UTSAorange}Option} & {\color{UTSAorange}Significance} \\
+		\rowcolor{UTSAorange!20} {\tt -i}  & Ignores cas for matching \\
+		\rowcolor{UTSAorange} {\tt -v}  & Doesn't display line matching expression \\
+		\rowcolor{UTSAorange!20} {\tt -n}  & Displays line numbers along with lines\\
+		\rowcolor{UTSAorange} {\tt -c}  & Displays count of number of occurrences \\
+		\rowcolor{UTSAorange!20} {\tt -l }  & Displays list of filenames only \\
+		\rowcolor{UTSAorange} {\tt -e exp}  & Displays {\tt exp} with this option.  Can be \\
+		\rowcolor{UTSAorange} & used multiple times. Also used for expression \\
+		\rowcolor{UTSAorange} & beginning with a hyphen.\\
+		\rowcolor{UTSAorange!20} {\tt -x}  & Matches pattern with entire line \\
+		\rowcolor{UTSAorange} {\tt -f file}  & Takes patterns from a file, one \\
+		\rowcolor{UTSAorange}   & per line \\
+		\end{tabular}
+	\end{table}
+	
+%	
+}
+
+%  Action...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+%\section*{}
+\frame[t]{
+	\frametitle{Comments}
+	
+	  %
+	\begin{itemize}
+		\item You can use \emph{regular expressions} in patterns and filenames, e.g.
+		\begin{itemize}
+			\item {\tt grep ``wo[od][de]house'' *.c}
+			\item Will print all matches to either {\tt woodhouse} or {\tt wodehouse} in all the C program files located in the current directory.
+		\end{itemize}
+		\item Works well with pipe ({\tt |}), e.g.
+		\begin{itemize}
+			\item {\tt ls /usr/bin | grep gcc}
+			\item Prints all executables in {\tt /usr/local} with {\tt gcc} in the command name.
+		\end{itemize}
+		\item Works well with ({\tt -exec (-ok)}) command with {\tt find},
+		\begin{itemize}
+			\item Use {\tt find} to find a file matching some regular expression then use {\tt grep} to look inside the file for an additional pattern.
+		\end{itemize}
+		\item{See also:  the Perl script {\tt ack}}
+		\begin{itemize}
+			\item A better {\tt grep}.
+		\end{itemize}
+	\end{itemize}
+	
+	
+%	
+}
+
+\end{document}
